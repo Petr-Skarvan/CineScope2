@@ -23,7 +23,9 @@ export function Navbar() {
   const [q, setQ] = useState(params.get('q') || '');
   const input = useRef(null);
 
-  useEffect(() => setQ(params.get('q') || ''), [params]);
+  useEffect(() => {
+    setQ(params.get('q') || '');
+  }, [params]);
 
   const submit = (event) => {
     event.preventDefault();

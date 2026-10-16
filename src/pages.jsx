@@ -316,7 +316,9 @@ function Review({ review }) {
 
 function Trailer({ video }) {
   const [play, setPlay] = useState(false);
-  useEffect(() => setPlay(false), [video?.key]);
+  useEffect(() => {
+    setPlay(false);
+  }, [video?.key]);
   if (!video) return <p className="muted">No trailer is currently available for this title.</p>;
   return (
     <div className="trailer">
@@ -351,7 +353,9 @@ export function Details({ mediaType }) {
   const reviews = useFetch((signal) => api.reviews(mediaType, id, { signal }), deps, on);
   const recs = useFetch((signal) => api.recommendations(mediaType, id, { signal }), deps, on);
   const [shown, setShown] = useState(3);
-  useEffect(() => setShown(3), [mediaType, id]);
+  useEffect(() => {
+    setShown(3);
+  }, [mediaType, id]);
 
   const x = details.data;
   useDocumentTitle(x ? `${x.title || x.name} — CineScope` : 'CineScope');
